@@ -2830,114 +2830,24 @@
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    .line 2108
     const-string v4, ":"
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 2109
     const-string v4, "    "
 
     invoke-virtual {v1, v4, p2}, Lcom/android/server/DevicePolicyManagerService$ActiveAdmin;->dump(Ljava/lang/String;Ljava/io/PrintWriter;)V
 
-    .line 2104
     :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_1
 
-    .line 2113
     .end local v1           #ap:Lcom/android/server/DevicePolicyManagerService$ActiveAdmin;
     :cond_2
     const-string v4, " "
 
     invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
-
-    .line 2114
-    const-string v4, "  mActivePasswordQuality=0x"
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    .line 2115
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordQuality:I
-
-    invoke-static {v4}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
-
-    .line 2116
-    const-string v4, "  mActivePasswordLength="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordLength:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2117
-    const-string v4, "  mActivePasswordUpperCase="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordUpperCase:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2118
-    const-string v4, "  mActivePasswordLowerCase="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordLowerCase:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2119
-    const-string v4, "  mActivePasswordLetters="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordLetters:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2120
-    const-string v4, "  mActivePasswordNumeric="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordNumeric:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2121
-    const-string v4, "  mActivePasswordSymbols="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordSymbols:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2122
-    const-string v4, "  mActivePasswordNonLetter="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mActivePasswordNonLetter:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
-
-    .line 2123
-    const-string v4, "  mFailedPasswordAttempts="
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
-
-    iget v4, p0, Lcom/android/server/DevicePolicyManagerService;->mFailedPasswordAttempts:I
-
-    invoke-virtual {p2, v4}, Ljava/io/PrintWriter;->println(I)V
 
     .line 2124
     const-string v4, "  mPasswordOwner="
@@ -2951,7 +2861,7 @@
     .line 2125
     monitor-exit p0
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .end local v0           #N:I
     .end local v2           #i:I
@@ -3032,6 +2942,8 @@
 
     .line 625
     :cond_1
+    invoke-direct {p0, p1}, Lcom/android/server/DevicePolicyManagerService;->validateAdmin(Landroid/content/ComponentName;)V
+
     :try_start_0
     new-instance v4, Landroid/app/admin/DeviceAdminInfo;
 
@@ -9326,4 +9238,152 @@
     invoke-static {v4, v5, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_2
+.end method
+
+.method private validateAdmin(Landroid/content/ComponentName;)V
+    .locals 7
+    .parameter "adminName"
+
+    .prologue
+    new-instance v3, Landroid/content/Intent;
+
+    const-string v4, "android.app.action.DEVICE_ADMIN_ENABLED"
+
+    invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .local v3, intent:Landroid/content/Intent;
+    invoke-virtual {p1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    iget-object v4, p0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v4
+
+    const/16 v5, 0x80
+
+    invoke-virtual {v4, v3, v5}, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent;I)Ljava/util/List;
+
+    move-result-object v2
+
+    .local v2, infos:Ljava/util/List;,"Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
+    if-eqz v2, :cond_0
+
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-gtz v4, :cond_1
+
+    :cond_0
+    new-instance v4, Ljava/lang/IllegalArgumentException;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "admin: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " do not have ACTION_DEVICE_ADMIN_ENABLED filter"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
+
+    :cond_1
+    const/4 v0, 0x0
+
+    .local v0, found:Z
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-ge v1, v4, :cond_2
+
+    invoke-virtual {p1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/content/pm/ResolveInfo;
+
+    iget-object v4, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v4, v4, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
+
+    invoke-virtual {v5, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3
+
+    const/4 v0, 0x1
+
+    :cond_2
+    if-nez v0, :cond_4
+
+    new-instance v4, Ljava/lang/IllegalArgumentException;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "admin: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " do not have ACTION_DEVICE_ADMIN_ENABLED filter"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
+
+    :cond_3
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    :cond_4
+    return-void
 .end method

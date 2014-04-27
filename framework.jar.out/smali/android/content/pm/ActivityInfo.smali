@@ -35,6 +35,8 @@
 
 .field public static final CONFIG_SMALLEST_SCREEN_SIZE:I = 0x800
 
+.field public static final CONFIG_THEME:I = -0x80000000
+
 .field public static final CONFIG_TOUCHSCREEN:I = 0x8
 
 .field public static final CONFIG_UI_MODE:I = 0x200
@@ -413,6 +415,10 @@
 
     .line 419
     :cond_1
+    invoke-static {p0, v1}, Landroid/content/pm/ActivityInfo;->setOutputBaidu(II)I
+
+    move-result v1
+
     return v1
 .end method
 
@@ -707,8 +713,7 @@
     .locals 2
 
     .prologue
-    .line 431
-    iget-object v0, p0, Landroid/content/pm/ComponentInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v0, p0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget v0, v0, Landroid/content/pm/ApplicationInfo;->targetSdkVersion:I
 
@@ -746,7 +751,7 @@
     return v0
 
     :cond_0
-    iget-object v0, p0, Landroid/content/pm/ComponentInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v0, p0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget v0, v0, Landroid/content/pm/ApplicationInfo;->theme:I
 
@@ -786,7 +791,7 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Landroid/content/pm/PackageItemInfo;->name:Ljava/lang/String;
+    iget-object v1, p0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -866,4 +871,25 @@
 
     .line 549
     return-void
+.end method
+
+.method private static setOutputBaidu(II)I
+    .locals 3
+    .parameter "input"
+    .parameter "orgOutput"
+
+    .prologue
+    const/high16 v2, -0x8000
+
+    move v0, p1
+
+    .local v0, output:I
+    and-int v1, p0, v2
+
+    if-eqz v1, :cond_0
+
+    or-int/2addr v0, v2
+
+    :cond_0
+    return v0
 .end method

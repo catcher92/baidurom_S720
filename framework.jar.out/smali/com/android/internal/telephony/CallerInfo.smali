@@ -4,6 +4,8 @@
 
 
 # static fields
+.field private static final CALLLOCATION_CONTENT_URL:Ljava/lang/String; = "content://com.android.Contacts.CallLocation/calllocationForPhone/"
+
 .field public static final PAYPHONE_NUMBER:Ljava/lang/String; = "-3"
 
 .field public static final PRIVATE_NUMBER:Ljava/lang/String; = "-2"
@@ -28,13 +30,25 @@
 
 .field public contactRingtoneUri:Landroid/net/Uri;
 
+.field public count:I
+
 .field public geoDescription:Ljava/lang/String;
 
 .field public isCachedPhotoCurrent:Z
 
+.field public label:Ljava/lang/String;
+
 .field private mIsEmergency:Z
 
 .field private mIsVoiceMail:Z
+
+.field public mPhotoHeight:I
+
+.field public mPhotoID:I
+
+.field public mPhotoWidth:I
+
+.field public mViewMode:I
 
 .field public name:Ljava/lang/String;
 
@@ -43,6 +57,8 @@
 .field public needUpdate:Z
 
 .field public normalizedNumber:Ljava/lang/String;
+
+.field public notes:Ljava/lang/String;
 
 .field public numberLabel:Ljava/lang/String;
 
@@ -90,16 +106,12 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 137
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 139
     iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsEmergency:Z
 
-    .line 140
     iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsVoiceMail:Z
 
-    .line 141
     return-void
 .end method
 
@@ -542,19 +554,63 @@
     :goto_4
     iput-boolean v3, v1, Lcom/android/internal/telephony/CallerInfo;->shouldSendToVoicemailSip:Z
 
-    .line 244
     iput-boolean v4, v1, Lcom/android/internal/telephony/CallerInfo;->contactExists:Z
 
-    .line 246
+    const-string v3, "width"
+
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {p2, v0}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v3
+
+    iput v3, v1, Lcom/android/internal/telephony/CallerInfo;->mPhotoWidth:I
+
+    const-string v3, "height"
+
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {p2, v0}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v3
+
+    iput v3, v1, Lcom/android/internal/telephony/CallerInfo;->mPhotoHeight:I
+
+    const-string v3, "photo_id"
+
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {p2, v0}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v3
+
+    iput v3, v1, Lcom/android/internal/telephony/CallerInfo;->mPhotoID:I
+
+    const-string v3, "view_mode"
+
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {p2, v0}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v3
+
+    iput v3, v1, Lcom/android/internal/telephony/CallerInfo;->mViewMode:I
+
     .end local v0           #columnIndex:I
     :cond_6
     invoke-interface {p2}, Landroid/database/Cursor;->close()V
 
-    .line 249
     :cond_7
     iput-boolean v5, v1, Lcom/android/internal/telephony/CallerInfo;->needUpdate:Z
 
-    .line 250
     iget-object v3, v1, Lcom/android/internal/telephony/CallerInfo;->name:Ljava/lang/String;
 
     invoke-static {v3}, Lcom/android/internal/telephony/CallerInfo;->normalize(Ljava/lang/String;)Ljava/lang/String;
@@ -594,30 +650,27 @@
 
     invoke-static {v3, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    goto/16 :goto_0
 
     .line 221
     :cond_9
     iput-object v10, v1, Lcom/android/internal/telephony/CallerInfo;->contactRingtoneUri:Landroid/net/Uri;
 
-    goto :goto_1
+    goto/16 :goto_1
 
     :cond_a
     move v3, v5
 
-    .line 227
-    goto :goto_2
+    goto/16 :goto_2
 
     :cond_b
     move v3, v5
 
-    .line 234
     goto :goto_3
 
     :cond_c
     move v3, v5
 
-    .line 240
     goto :goto_4
 .end method
 
@@ -1639,7 +1692,7 @@
 .end method
 
 .method public updateGeoDescription(Landroid/content/Context;Ljava/lang/String;)V
-    .locals 2
+    .locals 3
     .parameter "context"
     .parameter "fallbackNumber"
 
@@ -1658,7 +1711,11 @@
     .line 544
     .local v0, number:Ljava/lang/String;
     :goto_0
-    invoke-static {p1, v0}, Lcom/android/internal/telephony/CallerInfo;->getGeoDescription(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    invoke-static {p1, v0, v1, v2}, Lcom/baidu/internal/telephony/DisturbPreventUtils;->getPhoneLocation(Landroid/content/Context;Ljava/lang/String;ZZ)Ljava/lang/String;
 
     move-result-object v1
 
@@ -1673,4 +1730,419 @@
     iget-object v0, p0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
 
     goto :goto_0
+.end method
+
+.method private static getLocation(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    .locals 11
+    .parameter "context"
+    .parameter "number"
+
+    .prologue
+    const/4 v2, 0x0
+
+    sget-boolean v0, Lcom/android/internal/telephony/CallerInfo;->VDBG:Z
+
+    if-eqz v0, :cond_0
+
+    const-string v0, "CallerInfo"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "getLocation(\'"
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v3, "\')..."
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
+    const-string v7, ""
+
+    .local v7, location:Ljava/lang/String;
+    const-string v9, ""
+
+    .local v9, operator:Ljava/lang/String;
+    const-string v8, ""
+
+    .local v8, locationen:Ljava/lang/String;
+    const-string v10, ""
+
+    .local v10, operatoren:Ljava/lang/String;
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    :goto_0
+    return-object v2
+
+    :cond_1
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "content://com.android.Contacts.CallLocation/calllocationForPhone/"
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-static {p1}, Landroid/telephony/PhoneNumberUtils;->stripSeparators(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v1
+
+    move-object v3, v2
+
+    move-object v4, v2
+
+    move-object v5, v2
+
+    invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v6
+
+    .local v6, cursorLocation:Landroid/database/Cursor;
+    if-eqz v6, :cond_2
+
+    invoke-interface {v6}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    const-string v0, "locationName"
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v7
+
+    const-string v0, "typenameshort"
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v9
+
+    const-string v0, "locationNameEn"
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v8
+
+    const-string v0, "typenameshorten"
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v10
+
+    :cond_2
+    if-eqz v6, :cond_3
+
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_3
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    const-string v2, ""
+
+    goto :goto_0
+
+    :cond_4
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "|"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "&|"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    goto/16 :goto_0
+
+    :cond_5
+    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_6
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "|&"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "|"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    goto/16 :goto_0
+
+    :cond_6
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "|"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "&"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "|"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    goto/16 :goto_0
+.end method
+
+.method public updateGeoDescritionAndLabel(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 5
+    .parameter "context"
+    .parameter "fallbackNumber"
+
+    .prologue
+    iget-object v2, p0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
+
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    move-object v0, p2
+
+    .local v0, number:Ljava/lang/String;
+    :goto_0
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    invoke-static {p1, v0, v2, v3}, Lcom/baidu/internal/telephony/DisturbPreventUtils;->getPhoneLocationAndLabel(Landroid/content/Context;Ljava/lang/String;ZZ)Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;
+
+    move-result-object v1
+
+    .local v1, pl:Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;
+    iget-object v2, v1, Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;->mLocation:Ljava/lang/String;
+
+    iput-object v2, p0, Lcom/android/internal/telephony/CallerInfo;->geoDescription:Ljava/lang/String;
+
+    iget-object v2, v1, Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;->mLabel:Ljava/lang/String;
+
+    iput-object v2, p0, Lcom/android/internal/telephony/CallerInfo;->label:Ljava/lang/String;
+
+    iget v2, v1, Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;->mCount:I
+
+    iput v2, p0, Lcom/android/internal/telephony/CallerInfo;->count:I
+
+    sget-boolean v2, Lcom/android/internal/telephony/CallerInfo;->VDBG:Z
+
+    if-eqz v2, :cond_0
+
+    const-string v2, "CallerInfo"
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "updateGeoDescritionAndLabel(\'"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/android/internal/telephony/CallerInfo;->geoDescription:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ", label = "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/android/internal/telephony/CallerInfo;->label:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, " ,count = "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    iget v4, p0, Lcom/android/internal/telephony/CallerInfo;->count:I
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, "\')..."
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
+    return-void
+
+    .end local v0           #number:Ljava/lang/String;
+    .end local v1           #pl:Lcom/baidu/internal/telephony/DisturbPreventUtils$PhoneLabel;
+    :cond_1
+    iget-object v0, p0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
+
+    goto :goto_0
+.end method
+
+.method public updateNotes(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 1
+    .parameter "context"
+    .parameter "fallbackNumber"
+
+    .prologue
+    const-string v0, "TODO NOTEs"
+
+    iput-object v0, p0, Lcom/android/internal/telephony/CallerInfo;->notes:Ljava/lang/String;
+
+    return-void
 .end method

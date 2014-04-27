@@ -122,11 +122,9 @@
     .parameter "service"
 
     .prologue
-    .line 648
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 649
-    const-string/jumbo v0, "missing IConnectivityManager"
+    const-string v0, "missing IConnectivityManager"
 
     invoke-static {p1, v0}, Lcom/android/internal/util/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1444,7 +1442,103 @@
 .end method
 
 .method public startUsingNetworkFeature(ILjava/lang/String;)I
+    .locals 8
+    .parameter "networkType"
+    .parameter "feature"
+
+    .prologue
+    const/4 v1, 0x2
+
+    const/4 v7, 0x1
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x1
+
+    const/4 v4, 0x2
+
+    :try_start_0
+    new-array v4, v4, [Ljava/lang/Object;
+
+    const/4 v5, 0x0
+
+    new-instance v6, Ljava/lang/Integer;
+
+    invoke-direct {v6, p1}, Ljava/lang/Integer;-><init>(I)V
+
+    aput-object v6, v4, v5
+
+    const/4 v5, 0x1
+
+    aput-object p2, v4, v5
+
+    invoke-static {v2, v3, v4}, Lcom/baidu/server/dp/DynamicPermissionManager;->checkPermission(IZ[Ljava/lang/Object;)I
+
+    move-result v2
+
+    if-ne v2, v7, :cond_0
+
+    :goto_0
+    return v1
+
+    :cond_0
+    iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
+
+    new-instance v2, Landroid/os/Binder;
+
+    invoke-direct {v2}, Landroid/os/Binder;-><init>()V
+
+    invoke-interface {v1, p1, p2, v2}, Landroid/net/IConnectivityManager;->startUsingNetworkFeature(ILjava/lang/String;Landroid/os/IBinder;)I
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, -0x1
+
+    goto :goto_0
+.end method
+
+.method public startUsingNetworkFeatureGemini(ILjava/lang/String;I)I
     .locals 3
+    .parameter "networkType"
+    .parameter "feature"
+    .parameter "radioNum"
+
+    .prologue
+    :try_start_0
+    iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
+
+    new-instance v2, Landroid/os/Binder;
+
+    invoke-direct {v2}, Landroid/os/Binder;-><init>()V
+
+    invoke-interface {v1, p1, p2, v2, p3}, Landroid/net/IConnectivityManager;->startUsingNetworkFeatureGemini(ILjava/lang/String;Landroid/os/IBinder;I)I
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    :goto_0
+    return v1
+
+    :catch_0
+    move-exception v0
+
+    .local v0, e:Landroid/os/RemoteException;
+    const/4 v1, -0x1
+
+    goto :goto_0
+.end method
+
+.method public stopUsingNetworkFeature(ILjava/lang/String;)I
+    .locals 2
     .parameter "networkType"
     .parameter "feature"
 
@@ -1453,11 +1547,7 @@
     :try_start_0
     iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
 
-    new-instance v2, Landroid/os/Binder;
-
-    invoke-direct {v2}, Landroid/os/Binder;-><init>()V
-
-    invoke-interface {v1, p1, p2, v2}, Landroid/net/IConnectivityManager;->startUsingNetworkFeature(ILjava/lang/String;Landroid/os/IBinder;)I
+    invoke-interface {v1, p1, p2}, Landroid/net/IConnectivityManager;->stopUsingNetworkFeature(ILjava/lang/String;)I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1478,8 +1568,8 @@
     goto :goto_0
 .end method
 
-.method public startUsingNetworkFeatureGemini(ILjava/lang/String;I)I
-    .locals 3
+.method public stopUsingNetworkFeatureGemini(ILjava/lang/String;I)I
+    .locals 2
     .parameter "networkType"
     .parameter "feature"
     .parameter "radioNum"
@@ -1489,11 +1579,7 @@
     :try_start_0
     iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
 
-    new-instance v2, Landroid/os/Binder;
-
-    invoke-direct {v2}, Landroid/os/Binder;-><init>()V
-
-    invoke-interface {v1, p1, p2, v2, p3}, Landroid/net/IConnectivityManager;->startUsingNetworkFeatureGemini(ILjava/lang/String;Landroid/os/IBinder;I)I
+    invoke-interface {v1, p1, p2, p3}, Landroid/net/IConnectivityManager;->stopUsingNetworkFeatureGemini(ILjava/lang/String;I)I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1514,17 +1600,16 @@
     goto :goto_0
 .end method
 
-.method public stopUsingNetworkFeature(ILjava/lang/String;)I
+.method public tether(Ljava/lang/String;)I
     .locals 2
-    .parameter "networkType"
-    .parameter "feature"
+    .parameter "iface"
 
     .prologue
     .line 520
     :try_start_0
     iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
 
-    invoke-interface {v1, p1, p2}, Landroid/net/IConnectivityManager;->stopUsingNetworkFeature(ILjava/lang/String;)I
+    invoke-interface {v1, p1}, Landroid/net/IConnectivityManager;->tether(Ljava/lang/String;)I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1540,23 +1625,21 @@
 
     .line 522
     .local v0, e:Landroid/os/RemoteException;
-    const/4 v1, -0x1
+    const/4 v1, 0x2
 
     goto :goto_0
 .end method
 
-.method public stopUsingNetworkFeatureGemini(ILjava/lang/String;I)I
+.method public untether(Ljava/lang/String;)I
     .locals 2
-    .parameter "networkType"
-    .parameter "feature"
-    .parameter "radioNum"
+    .parameter "iface"
 
     .prologue
     .line 938
     :try_start_0
     iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
 
-    invoke-interface {v1, p1, p2, p3}, Landroid/net/IConnectivityManager;->stopUsingNetworkFeatureGemini(ILjava/lang/String;I)I
+    invoke-interface {v1, p1}, Landroid/net/IConnectivityManager;->untether(Ljava/lang/String;)I
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1571,66 +1654,6 @@
     move-exception v0
 
     .line 940
-    .local v0, e:Landroid/os/RemoteException;
-    const/4 v1, -0x1
-
-    goto :goto_0
-.end method
-
-.method public tether(Ljava/lang/String;)I
-    .locals 2
-    .parameter "iface"
-
-    .prologue
-    .line 691
-    :try_start_0
-    iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
-
-    invoke-interface {v1, p1}, Landroid/net/IConnectivityManager;->tether(Ljava/lang/String;)I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    move-result v1
-
-    .line 693
-    :goto_0
-    return v1
-
-    .line 692
-    :catch_0
-    move-exception v0
-
-    .line 693
-    .local v0, e:Landroid/os/RemoteException;
-    const/4 v1, 0x2
-
-    goto :goto_0
-.end method
-
-.method public untether(Ljava/lang/String;)I
-    .locals 2
-    .parameter "iface"
-
-    .prologue
-    .line 703
-    :try_start_0
-    iget-object v1, p0, Landroid/net/ConnectivityManager;->mService:Landroid/net/IConnectivityManager;
-
-    invoke-interface {v1, p1}, Landroid/net/IConnectivityManager;->untether(Ljava/lang/String;)I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    move-result v1
-
-    .line 705
-    :goto_0
-    return v1
-
-    .line 704
-    :catch_0
-    move-exception v0
-
-    .line 705
     .local v0, e:Landroid/os/RemoteException;
     const/4 v1, 0x2
 

@@ -45,11 +45,23 @@
 
 .field public static final APPEND_FOR_LAST_AUDIBLE:Ljava/lang/String; = "_last_audible"
 
+.field public static final AUTO_BRIGHTNESS_COE:Ljava/lang/String; = "auto_brightness_coe"
+
 .field public static final AUTO_TIME:Ljava/lang/String; = "auto_time"
 
 .field public static final AUTO_TIME_GPS:Ljava/lang/String; = "auto_time_gps"
 
 .field public static final AUTO_TIME_ZONE:Ljava/lang/String; = "auto_time_zone"
+
+.field public static final BATTERY_LIGHT_ENABLED:Ljava/lang/String; = "battery_light_enabled"
+
+.field public static final BATTERY_LIGHT_FULL_COLOR:Ljava/lang/String; = "battery_light_full_color"
+
+.field public static final BATTERY_LIGHT_LOW_COLOR:Ljava/lang/String; = "battery_light_low_color"
+
+.field public static final BATTERY_LIGHT_MEDIUM_COLOR:Ljava/lang/String; = "battery_light_medium_color"
+
+.field public static final BATTERY_LIGHT_PULSE:Ljava/lang/String; = "battery_light_pulse"
 
 .field public static final BLUETOOTH_DISCOVERABILITY:Ljava/lang/String; = "bluetooth_discoverability"
 
@@ -135,6 +147,8 @@
 .field public static final EMERGENCY_TONE:Ljava/lang/String; = "emergency_tone"
 
 .field public static final ENABLE_INTERNET_CALL:Ljava/lang/String; = "enable_internet_call_value"
+
+.field public static final ENABLE_MWI_NOTIFICATION:Ljava/lang/String; = "enable_mwi_notification"
 
 .field public static final END_BUTTON_BEHAVIOR:Ljava/lang/String; = "end_button_behavior"
 
@@ -281,6 +295,16 @@
 .end field
 
 .field public static final NOTIFICATION_LIGHT_PULSE:Ljava/lang/String; = "notification_light_pulse"
+
+.field public static final NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE:Ljava/lang/String; = "notification_light_pulse_custom_enable"
+
+.field public static final NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES:Ljava/lang/String; = "notification_light_pulse_custom_values"
+
+.field public static final NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR:Ljava/lang/String; = "notification_light_pulse_default_color"
+
+.field public static final NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF:Ljava/lang/String; = "notification_light_pulse_default_led_off"
+
+.field public static final NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON:Ljava/lang/String; = "notification_light_pulse_default_led_on"
 
 .field public static final NOTIFICATION_SOUND:Ljava/lang/String; = "notification_sound"
 
@@ -440,6 +464,8 @@
 .field public static final VOLUME_MUSIC:Ljava/lang/String; = "volume_music"
 
 .field public static final VOLUME_NOTIFICATION:Ljava/lang/String; = "volume_notification"
+
+.field public static final VOLUME_REVOKE:Ljava/lang/String; = "volume_revoke"
 
 .field public static final VOLUME_RING:Ljava/lang/String; = "volume_ring"
 
@@ -1001,40 +1027,39 @@
 
     sput-object v0, Landroid/provider/Settings$System;->DEFAULT_ALARM_ALERT_URI:Landroid/net/Uri;
 
-    .line 2484
-    const/16 v0, 0x3b
+    const/16 v0, 0x3e
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-string/jumbo v1, "stay_on_while_plugged_in"
+    const-string v1, "stay_on_while_plugged_in"
 
     aput-object v1, v0, v3
 
-    const-string/jumbo v1, "wifi_use_static_ip"
+    const-string v1, "wifi_use_static_ip"
 
     aput-object v1, v0, v4
 
-    const-string/jumbo v1, "wifi_static_ip"
+    const-string v1, "wifi_static_ip"
 
     aput-object v1, v0, v5
 
-    const-string/jumbo v1, "wifi_static_gateway"
+    const-string v1, "wifi_static_gateway"
 
     aput-object v1, v0, v6
 
-    const-string/jumbo v1, "wifi_static_netmask"
+    const-string v1, "wifi_static_netmask"
 
     aput-object v1, v0, v7
 
     const/4 v1, 0x5
 
-    const-string/jumbo v2, "wifi_static_dns1"
+    const-string v2, "wifi_static_dns1"
 
     aput-object v2, v0, v1
 
     const/4 v1, 0x6
 
-    const-string/jumbo v2, "wifi_static_dns2"
+    const-string v2, "wifi_static_dns2"
 
     aput-object v2, v0, v1
 
@@ -1347,6 +1372,24 @@
     const/16 v1, 0x3a
 
     const-string/jumbo v2, "pointer_speed"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x3b
+
+    const-string v2, "volume_revoke"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x3c
+
+    const-string v2, "prevent_wakeup"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x3d
+
+    const-string v2, "auto_brightness_coe"
 
     aput-object v2, v0, v1
 

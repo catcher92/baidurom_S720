@@ -1331,40 +1331,39 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 403
     if-nez p1, :cond_0
 
     invoke-virtual {p0}, Lcom/android/internal/widget/LockPatternUtils;->deleteGallery()V
 
-    .line 404
     :cond_0
     const/high16 v0, 0x1
 
     invoke-virtual {p0, v1, v0}, Lcom/android/internal/widget/LockPatternUtils;->saveLockPassword(Ljava/lang/String;I)V
 
-    .line 405
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/LockPatternUtils;->setLockPatternEnabled(Z)V
 
-    .line 406
     invoke-virtual {p0, v1}, Lcom/android/internal/widget/LockPatternUtils;->saveLockPattern(Ljava/util/List;)V
 
-    .line 407
     const-string v0, "lockscreen.password_type"
 
     const-wide/32 v1, 0x10000
 
     invoke-direct {p0, v0, v1, v2}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
 
-    .line 408
+    const-string v0, "lockscreen.lockmode_type"
+
+    const-wide/16 v1, 0x2
+
+    invoke-direct {p0, v0, v1, v2}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
+
     const-string v0, "lockscreen.password_type_alternate"
 
     const-wide/16 v1, 0x0
 
     invoke-direct {p0, v0, v1, v2}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
 
-    .line 409
     return-void
 .end method
 
@@ -1546,12 +1545,12 @@
 
     if-eqz v2, :cond_0
 
-    .line 391
     const/high16 v0, 0x6
 
     goto :goto_0
 
-    .line 363
+    nop
+
     :sswitch_data_0
     .sparse-switch
         0x8000 -> :sswitch_1
@@ -3189,7 +3188,7 @@
 
     invoke-virtual/range {v11 .. v19}, Landroid/app/admin/DevicePolicyManager;->setActivePasswordState(IIIIIIII)V
 
-    goto :goto_4
+    goto/16 :goto_4
 
     .line 658
     .restart local v27       #passwordHistory:Ljava/lang/String;

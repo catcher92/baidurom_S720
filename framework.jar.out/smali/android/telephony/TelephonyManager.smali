@@ -178,10 +178,8 @@
     .locals 0
 
     .prologue
-    .line 110
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 111
     return-void
 .end method
 
@@ -190,29 +188,23 @@
     .parameter "context"
 
     .prologue
-    .line 87
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 89
     sget-object v1, Landroid/telephony/TelephonyManager;->sContext:Landroid/content/Context;
 
     if-nez v1, :cond_0
 
-    .line 90
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 91
     .local v0, appContext:Landroid/content/Context;
     if-eqz v0, :cond_1
 
-    .line 92
     sput-object v0, Landroid/telephony/TelephonyManager;->sContext:Landroid/content/Context;
 
-    .line 97
     :goto_0
-    const-string/jumbo v1, "telephony.registry"
+    const-string v1, "telephony.registry"
 
     invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
@@ -4056,5 +4048,33 @@
 
     .line 1965
     .local v0, ex:Landroid/os/RemoteException;
+    goto :goto_0
+.end method
+
+.method public updateMobileData(I)I
+    .locals 2
+    .parameter "SlotId"
+
+    .prologue
+    :try_start_0
+    invoke-direct {p0}, Landroid/telephony/TelephonyManager;->getITelephony()Lcom/android/internal/telephony/ITelephony;
+
+    move-result-object v1
+
+    invoke-interface {v1, p1}, Lcom/android/internal/telephony/ITelephony;->updateMobileDataApp(I)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    const/4 v1, 0x1
+
+    :goto_0
+    return v1
+
+    :catch_0
+    move-exception v0
+
+    .local v0, ex:Landroid/os/RemoteException;
+    const/4 v1, -0x1
+
     goto :goto_0
 .end method

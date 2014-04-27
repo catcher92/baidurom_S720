@@ -10,6 +10,8 @@
 
 .field public static final POLICY_NONE:I = 0x0
 
+.field public static final POLICY_REJECT_METERED:I = 0x2
+
 .field public static final POLICY_REJECT_METERED_BACKGROUND:I = 0x1
 
 .field public static final RULE_ALLOW_ALL:I = 0x0
@@ -27,26 +29,21 @@
     .parameter "service"
 
     .prologue
-    .line 62
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 63
     if-nez p1, :cond_0
 
-    .line 64
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    const-string/jumbo v1, "missing INetworkPolicyManager"
+    const-string v1, "missing INetworkPolicyManager"
 
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 66
     :cond_0
     iput-object p1, p0, Landroid/net/NetworkPolicyManager;->mService:Landroid/net/INetworkPolicyManager;
 
-    .line 67
     return-void
 .end method
 
