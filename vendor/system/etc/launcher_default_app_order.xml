@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<favorites xmlns:desktop="http://schemas.android.com/apk/res/com.lenovo.ideadesktop">
+    <!-- 拨号 --><favorite desktop:packageName="com.android.contacts" desktop:className="com.android.contacts.activities.DialtactsActivity" />
+    <!-- 信息 --><favorite desktop:packageName="com.android.mms" desktop:className="com.android.mms.ui.BootActivity" />
+    <!-- 联系人 --><favorite desktop:packageName="com.android.contacts" desktop:className="com.android.contacts.activities.PeopleActivity" />
+    <!-- 通话记录 --><favorite desktop:packageName="com.android.contacts" desktop:className="com.android.contacts.DialtactsCallLogEntryActivity" />
+    <!-- 音乐 --><favorite desktop:packageName="com.android.music" desktop:className="com.android.music.MusicBrowserActivity" />
+    <!-- 视频 --><favorite desktop:packageName="com.mediatek.videoplayer" desktop:className="com.mediatek.videoplayer.MovieListActivity" />
+    <!-- 相机 --><favorite desktop:packageName="com.android.camera" desktop:className="com.android.camera.CameraPre" />
+    <!-- 图库 --><favorite desktop:packageName="com.android.gallery3d" desktop:className="com.android.gallery3d.app.Gallery" />
+    <!-- 文件管理器 --><favorite desktop:packageName="com.lenovo.FileBrowser" desktop:className="com.lenovo.FileBrowser.FileBrowserActivity" />
+    <!-- 系统设置 --><favorite desktop:packageName="com.android.settings" desktop:className="com.android.settings.Settings" />
+    <!-- 浏览器 --><favorite desktop:packageName="com.android.browser" desktop:className="com.android.browser.BrowserActivity" />
+    <!-- 时钟 --><favorite desktop:packageName="com.lenovomobile.deskclock" desktop:className="com.lenovomobile.clock.Clock" />
+    <!-- 乐商店 --><favorite desktop:packageName="com.lenovo.leos.appstore" desktop:className="com.lenovo.leos.appstore.ui.Loft" />
+    <!-- 乐日历 --><favorite desktop:packageName="com.lenovo.app.Calendar" desktop:className="com.lenovo.app.Calendar.MonthActivityNew" />
+    <!-- 乐安全 --><favorite desktop:packageName="com.lenovo.safecenter" desktop:className="com.lenovo.safecenter.MainTab.SplashActivity" />
+    <!-- 乐省电 --><favorite desktop:packageName="com.lenovo.powersaving" desktop:className="com.lenovo.powersaving.MainScreen" />
+    <!-- 计算器 --><favorite desktop:packageName="com.android.calculator2" desktop:className="com.android.calculator2.Calculator" />
+    <!-- 录音机 --><favorite desktop:packageName="com.android.soundrecorder" desktop:className="com.android.soundrecorder.SoundRecorder" />
+    <!-- 收音机 --><favorite desktop:packageName="com.mediatek.FMRadio" desktop:className="com.mediatek.FMRadio.FMRadioActivity" />
+    <!-- 玩家教程 --><favorite desktop:packageName="com.novicetutorial" desktop:className="com.novicetutorial.NoviceTutorialActivity" />
+
+    <!-- 美丽魔镜 --><favorite desktop:packageName="com.android.cosmetologycamera" desktop:className="com.android.cosmetologycamera.Camera" />
+    <!-- 报警求救 --><favorite desktop:packageName="com.lenovo.sos" desktop:className="com.lenovo.sos.LenovoSOSSettings" />
+    <!-- 粉色日历 --><favorite desktop:packageName="cn.etouch.ecalendar.ladies" desktop:className="cn.etouch.ecalendar.LoadingActivity" />
+    <!-- 美丽说 --><favorite desktop:packageName="com.meilishuo" desktop:className="com.meilishuo.app.activity.WelcomeActivity" />
+    <!-- i悦读 --><favorite desktop:packageName="com.iyd.reader.ReadingJoy" desktop:className="com.sensky.sunshinereader.logo.logo" />
+		<!-- VIVA畅读 --><favorite desktop:packageName="viva.reader" desktop:className="viva.reader.SplashActivity" />
+    <!-- 淘宝 --><favorite desktop:packageName="com.taobao.taobao" desktop:className="com.taobao.tao.Welcome" />
+    <!-- 多米音乐 --><favorite desktop:packageName="com.duomi.android" desktop:className="com.duomi.android.DMMainActivity" />
+    <!-- 手机QQ --><favorite desktop:packageName="com.tencent.mobileqq" desktop:className="com.tencent.mobileqq.activity.SplashActivity" />
+    <!-- 腾讯微博 --><favorite desktop:packageName="com.tencent.WBlog" desktop:className="com.tencent.WBlog.activity.WBlogFirstRun" />
+    <!-- QQ空间 --><favorite desktop:packageName="com.qzone" desktop:className="com.tencent.sc.activity.SplashActivity" />
+    <!-- 微博 --><favorite desktop:packageName="com.sina.weibo" desktop:className="com.sina.weibo.SplashActivity" />
+    <!-- 搜狐新闻 --><favorite desktop:packageName="com.sohu.newsclient" desktop:className="com.sohu.newsclient.app.SplashActivity" />
+    <!-- 搜狐视频 --><favorite desktop:packageName="com.sohu.sohuvideo" desktop:className="com.sohu.sohuvideo.FirstNavigationActivityGroup" />
+    <!-- UC浏览器 --><favorite desktop:packageName="com.UCMobile" desktop:className="com.UCMobile.main.UCMobile" />
+    <!-- 大众点评 --><favorite desktop:packageName="com.dianping.v1" desktop:className="com.dianping.v1.SplashScreenActivity" />
+    <!-- 去哪儿旅行 --><favorite desktop:packageName="com.Qunar" desktop:className="com.Qunar.NoteActivity" />
+    <!-- 高德导航 --><favorite desktop:packageName="com.autonavi.xmgd.navigator.phone.lenovo.s720" desktop:className="com.autonavi.xmgd.navigator.phone.lenovo.s720.Start" />
+    <!-- 搜狗地图 --><favorite desktop:packageName="com.sogou.map.android.maps" desktop:className="com.sogou.map.android.maps.SplashActivity" />
+    <!-- 美图GIF --><favorite desktop:packageName="com.mt.mtgif" desktop:className="com.mt.mtgif.ActivityTopView" />
+
+    <!-- WPS Office --><favorite desktop:packageName="cn.wps.moffice" desktop:className="cn.wps.moffice.documentmanager.PreStartActivity" />
+    <!-- 有道词典 --><favorite desktop:packageName="com.youdao.dict" desktop:className="com.youdao.dict.activity.DictSplashActivity" />
+    <!-- 百度搜索 --><favorite desktop:packageName="com.baidu.searchbox_lenovo" desktop:className="com.baidu.searchbox.MainActivity" />
+    <!-- 归属地 --><favorite desktop:packageName="lenovo.citynum" desktop:className="lenovo.citynum.CityNumActivity" />
+    <!-- 宝石迷境 --><favorite desktop:packageName="baoshi.playplus.hda" desktop:className="baoshi.playplus.hda.GameFrame" />
+    <!-- 烧绳子 --><favorite desktop:packageName="com.bbb.btrminicn" desktop:className="com.bbb.btrminicn.Test_rebuild_gameActivity" />
+    <!-- 捕鱼达人 --><favorite desktop:packageName="org.cocos2dx.FishGame" desktop:className="org.cocos2dx.FishGame.FishingJoy" />
+    <!-- 搜索 --><favorite desktop:packageName="com.android.quicksearchbox" desktop:className="com.android.quicksearchbox.SearchActivity" />
+    <!-- 乐语音 --><favorite desktop:packageName="com.lenovo.levoice" desktop:className="com.lenovo.lv.vehicle.activity.MainActivity" />
+    <!-- 乐同步 --><favorite desktop:packageName="com.lenovo.leos.cloud.sync" desktop:className="com.lenovo.leos.cloud.sync.common.activity.SplashScreenActivity" />
+    <!-- 乐服务 --><favorite desktop:packageName="com.lenovo.service" desktop:className="com.lenovo.service.LaunchActivity" />
+		<!-- 乐关联 -->
+    <!-- 乐记事 --><favorite desktop:packageName="com.snda.inote.lenovo" desktop:className="com.snda.inote.lenovo.activity.WelcomeActivity" />
+    <!-- 备份恢复 --><favorite desktop:packageName="com.lenovo.BackupRestore" desktop:className="com.lenovo.BackupRestore.ui.MainActivity" />
+    <!-- 电子邮件 --><favorite desktop:packageName="com.android.email" desktop:className="com.android.email.activity.Welcome" />
+    <!-- 天气 --><favorite desktop:packageName="com.lenovo.android.LenovoSinaWeather" desktop:className="com.lenovo.android.LenovoSinaWeather.WelcomeActivity" />
+    <!-- 安装包搜索 --><favorite desktop:packageName="com.lenovo.sdapkinstaller" desktop:className="com.lenovo.sdapkinstaller.ApkInstaller" />
+    <!-- 主题配色 --><favorite desktop:packageName="com.lenovo.themeSwitchTools" desktop:className="com.lenovo.themeSwitchTools.theme_explanaton_activity" />
+    <!-- 服务设置 --><favorite desktop:packageName="com.lenovo.leos.lenovoservicesetting" desktop:className="com.lenovo.leos.lenovoservicesetting.setting.PushSettingActivity" />
+    <!-- 猜你喜欢 --><favorite desktop:packageName="com.lenovo.leos.hw" desktop:className="com.lenovo.leos.hw.ui.HwUiActivity" />
+
+    <!-- 个人热点 --><favorite desktop:packageName="com.lenovo.android.settings.tether" desktop:className="com.lenovo.android.settings.tether.TetherSettings" />
+
+    <!-- SIM卡应用<favorite desktop:packageName="com.mediatek.StkSelection" desktop:className="com.mediatek.StkSelection.StkSelection" /> -->
+</favorites>
