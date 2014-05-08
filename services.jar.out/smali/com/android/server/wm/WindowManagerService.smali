@@ -55050,3 +55050,78 @@
 
     return-object v0
 .end method
+
+.method public addNavigationBar()V
+    .locals 1
+
+    .prologue
+    .line 10712
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
+
+    invoke-interface {v0}, Landroid/view/WindowManagerPolicy;->addNavigationBar()V
+
+    .line 10713
+    return-void
+.end method
+
+.method public removeNavigationBar()V
+    .locals 1
+
+    .prologue
+    .line 10716
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
+
+    invoke-interface {v0}, Landroid/view/WindowManagerPolicy;->removeNavigationBar()V
+
+    .line 10717
+    return-void
+.end method
+
+.method public reSizeWindow(Z)V
+    .locals 3
+    .parameter "force"
+
+    .prologue
+    .line 10720
+    iget-object v1, p0, Lcom/android/server/wm/WindowManagerService;->mDisplaySizeLock:Ljava/lang/Object;
+
+    monitor-enter v1
+
+    .line 10721
+    if-eqz p1, :cond_0
+
+    .line 10722
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
+
+    const/4 v2, 0x1
+
+    invoke-interface {v0, v2}, Landroid/view/WindowManagerPolicy;->setNeedNavigationBar(Z)V
+
+    .line 10726
+    :goto_0
+    monitor-exit v1
+
+    .line 10727
+    return-void
+
+    .line 10724
+    :cond_0
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mPolicy:Landroid/view/WindowManagerPolicy;
+
+    const/4 v2, 0x0
+
+    invoke-interface {v0, v2}, Landroid/view/WindowManagerPolicy;->setNeedNavigationBar(Z)V
+
+    goto :goto_0
+
+    .line 10726
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
+.end method

@@ -156,7 +156,7 @@
 
     new-instance v0, Ljava/lang/Object;
 
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    invoke-direct/range {v0 .. v0}, Ljava/lang/Object;-><init>()V
 
     sput-object v0, Landroid/content/pm/PackageParser;->mSync:Ljava/lang/Object;
 
@@ -175,7 +175,7 @@
     .parameter "archiveSourcePath"
 
     .prologue
-    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     const/4 v0, 0x1
 
@@ -2037,7 +2037,7 @@
     .local v3, activity:Landroid/content/pm/PackageParser$Activity;
     iget-object v12, v3, Landroid/content/pm/PackageParser$Activity;->info:Landroid/content/pm/ActivityInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ActivityInfo;->enabled:Z
 
     if-nez v12, :cond_21
 
@@ -2115,7 +2115,7 @@
 
     iget-object v12, v12, Landroid/content/pm/PackageParser$Activity;->info:Landroid/content/pm/ActivityInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ActivityInfo;->enabled:Z
 
     if-eqz v12, :cond_24
 
@@ -2197,7 +2197,7 @@
     .restart local v3       #activity:Landroid/content/pm/PackageParser$Activity;
     iget-object v12, v3, Landroid/content/pm/PackageParser$Activity;->info:Landroid/content/pm/ActivityInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ActivityInfo;->enabled:Z
 
     if-nez v12, :cond_27
 
@@ -2269,7 +2269,7 @@
 
     iget-object v12, v12, Landroid/content/pm/PackageParser$Activity;->info:Landroid/content/pm/ActivityInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ActivityInfo;->enabled:Z
 
     if-eqz v12, :cond_29
 
@@ -2351,7 +2351,7 @@
     .local v11, service:Landroid/content/pm/PackageParser$Service;
     iget-object v12, v11, Landroid/content/pm/PackageParser$Service;->info:Landroid/content/pm/ServiceInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ServiceInfo;->enabled:Z
 
     if-nez v12, :cond_2c
 
@@ -2423,7 +2423,7 @@
 
     iget-object v12, v12, Landroid/content/pm/PackageParser$Service;->info:Landroid/content/pm/ServiceInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ServiceInfo;->enabled:Z
 
     if-eqz v12, :cond_2e
 
@@ -2505,7 +2505,7 @@
     .local v10, provider:Landroid/content/pm/PackageParser$Provider;
     iget-object v12, v10, Landroid/content/pm/PackageParser$Provider;->info:Landroid/content/pm/ProviderInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ProviderInfo;->enabled:Z
 
     if-nez v12, :cond_31
 
@@ -2577,7 +2577,7 @@
 
     iget-object v12, v12, Landroid/content/pm/PackageParser$Provider;->info:Landroid/content/pm/ProviderInfo;
 
-    iget-boolean v12, v12, Landroid/content/pm/ComponentInfo;->enabled:Z
+    iget-boolean v12, v12, Landroid/content/pm/ProviderInfo;->enabled:Z
 
     if-eqz v12, :cond_33
 
@@ -4148,7 +4148,7 @@
 
     .line 2432
     :cond_1c
-    iget-object v2, v14, Landroid/content/pm/PackageParser$Component;->intents:Ljava/util/ArrayList;
+    iget-object v2, v14, Landroid/content/pm/PackageParser$Activity;->intents:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
@@ -4368,7 +4368,7 @@
     const/4 v2, 0x1
 
     :goto_a
-    iput-boolean v2, v3, Landroid/content/pm/ComponentInfo;->exported:Z
+    iput-boolean v2, v3, Landroid/content/pm/ActivityInfo;->exported:Z
 
     goto/16 :goto_1
 
@@ -8034,26 +8034,6 @@
     const-string v3, "android"
 
     move-object/from16 v0, v28
-
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_4
-
-    const-string v3, "jrdcom"
-
-    move-object/from16 v0, v25
-
-    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-nez v3, :cond_4
-
-    const-string v3, "yi"
-
-    move-object/from16 v0, v25
 
     invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 

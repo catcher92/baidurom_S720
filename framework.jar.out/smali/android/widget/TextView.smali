@@ -49,6 +49,8 @@
 
 
 # static fields
+.field protected isEditToolbarReadMode:Z
+
 .field private static final ANIMATED_SCROLL_GAP:I = 0xfa
 
 .field private static final BLINK:I = 0x1f4
@@ -4058,18 +4060,6 @@
     .end packed-switch
 .end method
 
-.method static synthetic access$10002(Landroid/widget/TextView;Z)Z
-    .locals 0
-    .parameter "x0"
-    .parameter "x1"
-
-    .prologue
-    .line 239
-    iput-boolean p1, p0, Landroid/widget/TextView;->mDiscardNextActionUp:Z
-
-    return p1
-.end method
-
 .method static synthetic access$10100(Landroid/widget/TextView;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
@@ -4458,17 +4448,6 @@
     return-object v0
 .end method
 
-.method static synthetic access$500(Landroid/widget/TextView;)Ljava/lang/CharSequence;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 239
-    iget-object v0, p0, Landroid/widget/TextView;->mText:Ljava/lang/CharSequence;
-
-    return-object v0
-.end method
-
 .method static synthetic access$5000(Landroid/widget/TextView;)Z
     .locals 1
     .parameter "x0"
@@ -4480,6 +4459,17 @@
     move-result v0
 
     return v0
+.end method
+
+.method static synthetic access$500(Landroid/widget/TextView;)Ljava/lang/CharSequence;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 239
+    iget-object v0, p0, Landroid/widget/TextView;->mText:Ljava/lang/CharSequence;
+
+    return-object v0
 .end method
 
 .method static synthetic access$5100(Landroid/widget/TextView;)Z
@@ -4598,16 +4588,6 @@
     return-void
 .end method
 
-.method static synthetic access$600()Landroid/graphics/RectF;
-    .locals 1
-
-    .prologue
-    .line 239
-    sget-object v0, Landroid/widget/TextView;->sTempRect:Landroid/graphics/RectF;
-
-    return-object v0
-.end method
-
 .method static synthetic access$6000(Landroid/widget/TextView;)Ljava/lang/CharSequence;
     .locals 1
     .parameter "x0"
@@ -4629,6 +4609,16 @@
     iput-object p1, p0, Landroid/widget/TextView;->mSearchText:Ljava/lang/CharSequence;
 
     return-object p1
+.end method
+
+.method static synthetic access$600()Landroid/graphics/RectF;
+    .locals 1
+
+    .prologue
+    .line 239
+    sget-object v0, Landroid/widget/TextView;->sTempRect:Landroid/graphics/RectF;
+
+    return-object v0
 .end method
 
 .method static synthetic access$6100(Landroid/widget/TextView;II)Ljava/lang/CharSequence;
@@ -4738,6 +4728,17 @@
     return-object v0
 .end method
 
+.method static synthetic access$7000(Landroid/widget/TextView;)Landroid/content/Context;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 239
+    iget-object v0, p0, Landroid/widget/TextView;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
 .method static synthetic access$700(Landroid/widget/TextView;Z)I
     .locals 1
     .parameter "x0"
@@ -4750,17 +4751,6 @@
     move-result v0
 
     return v0
-.end method
-
-.method static synthetic access$7000(Landroid/widget/TextView;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 239
-    iget-object v0, p0, Landroid/widget/TextView;->mContext:Landroid/content/Context;
-
-    return-object v0
 .end method
 
 .method static synthetic access$7100(Landroid/widget/TextView;)Landroid/content/Context;
@@ -4861,6 +4851,17 @@
     return-object v0
 .end method
 
+.method static synthetic access$8100(Landroid/widget/TextView;)Landroid/content/Context;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 239
+    iget-object v0, p0, Landroid/widget/TextView;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
 .method static synthetic access$802(Landroid/widget/TextView;Landroid/widget/TextView$CorrectionHighlighter;)Landroid/widget/TextView$CorrectionHighlighter;
     .locals 0
     .parameter "x0"
@@ -4871,17 +4872,6 @@
     iput-object p1, p0, Landroid/widget/TextView;->mCorrectionHighlighter:Landroid/widget/TextView$CorrectionHighlighter;
 
     return-object p1
-.end method
-
-.method static synthetic access$8100(Landroid/widget/TextView;)Landroid/content/Context;
-    .locals 1
-    .parameter "x0"
-
-    .prologue
-    .line 239
-    iget-object v0, p0, Landroid/widget/TextView;->mContext:Landroid/content/Context;
-
-    return-object v0
 .end method
 
 .method static synthetic access$8200(Landroid/widget/TextView;)Landroid/content/Context;
@@ -5123,6 +5113,18 @@
     move-result v0
 
     return v0
+.end method
+
+.method static synthetic access$10002(Landroid/widget/TextView;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+
+    .prologue
+    .line 239
+    iput-boolean p1, p0, Landroid/widget/TextView;->mDiscardNextActionUp:Z
+
+    return p1
 .end method
 
 .method private applySingleLine(ZZZ)V

@@ -84,6 +84,7 @@
 
 .field public static final BUTTON_BRIGHTNESS_MODE_OPEN:I = 0x1
 
+.field public static final BUTTON_LIGHT_OFF:Ljava/lang/String; = "button_light_off"
 .field public static final CALL_AUTO_RETRY:Ljava/lang/String; = "call_auto_retry"
 
 .field public static final CAR_DOCK_SOUND:Ljava/lang/String; = "car_dock_sound"
@@ -334,6 +335,14 @@
 .field public static final POWER_SOUNDS_ENABLED:Ljava/lang/String; = "power_sounds_enabled"
 
 .field public static final PRE_GPRS_CONNECTION_SIM_SETTING:Ljava/lang/String; = "pre_gprs_connection_sim_setting"
+
+.field public static final PREVENT_WAKEUP:Ljava/lang/String; = "prevent_wakeup"
+
+.field public static final PRE_SET_ALARM_ALERT:Ljava/lang/String; = "pre_set_alarm_alert"
+
+.field public static final PRE_SET_NOTIFICATION_SOUND:Ljava/lang/String; = "pre_set_notification_sound"
+
+.field public static final PRE_SET_RINGTONE:Ljava/lang/String; = "pre_set_ringtone"
 
 .field public static final RADIO_BLUETOOTH:Ljava/lang/String; = "bluetooth"
 

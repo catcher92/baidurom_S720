@@ -710,3 +710,10 @@
 
     goto :goto_0
 .end method
+
+.method public menuItemFlagged()V
+    .locals 0
+
+    .prologue
+    return-void
+.end method

@@ -53,7 +53,7 @@
     iget-object v0, v0, Landroid/widget/TextView$SuggestionsPopupWindow;->this$0:Landroid/widget/TextView;
 
     #calls: Landroid/widget/TextView;->getPositionListener()Landroid/widget/TextView$PositionListener;
-    invoke-static {v0}, Landroid/widget/TextView;->access$2300(Landroid/widget/TextView;)Landroid/widget/TextView$PositionListener;
+    invoke-static {v0}, Landroid/widget/TextView;->access$2400(Landroid/widget/TextView;)Landroid/widget/TextView$PositionListener;
 
     move-result-object v0
 
@@ -78,7 +78,7 @@
     iget-object v1, v1, Landroid/widget/TextView$SuggestionsPopupWindow;->this$0:Landroid/widget/TextView;
 
     #getter for: Landroid/widget/TextView;->mSuggestionRangeSpan:Landroid/text/style/SuggestionRangeSpan;
-    invoke-static {v1}, Landroid/widget/TextView;->access$2900(Landroid/widget/TextView;)Landroid/text/style/SuggestionRangeSpan;
+    invoke-static {v1}, Landroid/widget/TextView;->access$3100(Landroid/widget/TextView;)Landroid/text/style/SuggestionRangeSpan;
 
     move-result-object v1
 
@@ -92,7 +92,7 @@
     iget-object v1, p0, Landroid/widget/TextView$SuggestionsPopupWindow$CustomPopupWindow;->this$1:Landroid/widget/TextView$SuggestionsPopupWindow;
 
     #getter for: Landroid/widget/TextView$SuggestionsPopupWindow;->mCursorWasVisibleBeforeSuggestions:Z
-    invoke-static {v1}, Landroid/widget/TextView$SuggestionsPopupWindow;->access$3000(Landroid/widget/TextView$SuggestionsPopupWindow;)Z
+    invoke-static {v1}, Landroid/widget/TextView$SuggestionsPopupWindow;->access$3200(Landroid/widget/TextView$SuggestionsPopupWindow;)Z
 
     move-result v1
 

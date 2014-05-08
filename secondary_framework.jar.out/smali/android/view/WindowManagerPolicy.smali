@@ -213,6 +213,15 @@
 .method public abstract hasNavigationBar()Z
 .end method
 
+.method public abstract addNavigationBar()V
+.end method
+
+.method public abstract removeNavigationBar()V
+.end method
+
+.method public abstract setNeedNavigationBar(Z)V
+.end method
+
 .method public abstract hideBootMessages()V
 .end method
 

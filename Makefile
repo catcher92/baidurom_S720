@@ -98,9 +98,9 @@ vendor_modify_jars := framework mediatek-framework secondary_framework services
 
 ##############################################################################
 # baidu_modify_apps: which base the baidu's apk
-# just override the res, append *.smali.part
+# just override the res, app end *.smali.part
 #-----------------------------------------------------------------------------
-baidu_modify_apps := Phone
+baidu_modify_apps := Phone BaiduCamera Settings
 
 ##############################################################################
 # baidu_modify_jars: which base the baidu's jar
@@ -113,8 +113,10 @@ baidu_modify_jars := android.policy
 #-----------------------------------------------------------------------------
 
 # hide the soft mainkeys
-# override_property += \
-#    qemu.hw.mainkeys=1
+override_property += \
+    sys.product_default_lock_mode=1 
+	ro.baidu.romer=cxd541806675
+
 
 ##############################################################################
 # override_property: this property will override the build.prop

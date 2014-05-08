@@ -1164,109 +1164,13 @@
 
     .line 884
     :cond_10
-    iget-object v1, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    if-eqz v1, :cond_12
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    if-eqz v1, :cond_11
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    iget-object v2, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-direct {p0, p1}, Landroid/content/res/Configuration;->multiTheme_dealThemeChange2(Landroid/content/res/Configuration;)I
 
     move-result v1
 
-    if-nez v1, :cond_12
-
-    .line 885
-    :cond_11
-    const/high16 v1, -0x8000
-
     or-int/2addr v0, v1
 
-    .line 888
-    :cond_12
-    iget v1, p1, Landroid/content/res/Configuration;->ControlTheme:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->ControlTheme:I
-
-    if-eq v1, v2, :cond_13
-
-    .line 889
-    or-int/lit16 v0, v0, 0x2000
-
-    .line 892
-    :cond_13
-    iget v1, p1, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nDialogres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nDialogres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nButtonres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nButtonres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSwitchres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTabres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTabres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    if-ne v1, v2, :cond_14
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    if-eq v1, v2, :cond_15
-
     .line 902
-    :cond_14
-    or-int/lit16 v0, v0, 0x2000
-
-    .line 906
-    :cond_15
     return v0
 .end method
 
@@ -1482,6 +1386,18 @@
     move-result v2
 
     :cond_0
+    add-int v0, v1, v2
+
+    mul-int/lit8 v1, v0, 0x1f
+
+    iget v2, p0, Landroid/content/res/Configuration;->themeChanged:I
+
+    add-int v0, v1, v2
+
+    mul-int/lit8 v1, v0, 0x1f
+
+    iget v2, p0, Landroid/content/res/Configuration;->themeChanged:I
+
     add-int v0, v1, v2
 
     mul-int/lit8 v1, v0, 0x1f
@@ -2030,62 +1946,12 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
-    iget-object v0, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
+    .line 343
+    iget v0, p1, Landroid/content/res/Configuration;->themeChanged:I
 
-    iput-object v0, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
+    iput v0, p0, Landroid/content/res/Configuration;->themeChanged:I
 
-    iget-object v0, p1, Landroid/content/res/Configuration;->packagename:Ljava/lang/String;
-
-    iput-object v0, p0, Landroid/content/res/Configuration;->packagename:Ljava/lang/String;
-
-    iget v0, p1, Landroid/content/res/Configuration;->ControlTheme:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->ControlTheme:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->current_theme_id:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->current_theme_id:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nDialogres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nDialogres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nButtonres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nButtonres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nTabres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nTabres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iget v0, p1, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    iput v0, p0, Landroid/content/res/Configuration;->nSeekbarres:I
-
+    .line 344
     return-void
 .end method
 
@@ -3569,146 +3435,13 @@
 
     .line 755
     :cond_19
-    iget-object v1, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    if-eqz v1, :cond_1c
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    if-eqz v1, :cond_1a
-
-    iget-object v1, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    iget-object v3, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-direct {p0, p1}, Landroid/content/res/Configuration;->multiTheme_dealThemeChange(Landroid/content/res/Configuration;)I
 
     move-result v1
 
-    if-nez v1, :cond_1c
-
-    .line 756
-    :cond_1a
-    const/high16 v1, -0x8000
-
     or-int/2addr v0, v1
 
-    .line 757
-    iget-object v1, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    if-eqz v1, :cond_1b
-
-    iget-object v2, p1, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    :cond_1b
-    iput-object v2, p0, Landroid/content/res/Configuration;->skin:Ljava/lang/String;
-
-    .line 763
-    :cond_1c
-    iget v1, p1, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nDialogres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nDialogres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nButtonres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nButtonres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSwitchres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTabres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTabres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    if-ne v1, v2, :cond_1d
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    iget v2, p0, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    if-eq v1, v2, :cond_1e
-
-    :cond_1d
-    or-int/lit16 v0, v0, 0x2000
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nTitlecolor:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nDialogres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nDialogres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nButtonres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nButtonres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nCheckboxres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nSwitchres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTabres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nTabres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nRadioButtonres:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nTitleBackground:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nSectionLineBackground:I
-
-    iget v1, p1, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    iput v1, p0, Landroid/content/res/Configuration;->nSeekbarres:I
-
-    :cond_1e
+    .line 622
     return v0
 
     :cond_1f

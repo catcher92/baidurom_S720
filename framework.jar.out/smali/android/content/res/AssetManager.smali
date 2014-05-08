@@ -3355,11 +3355,11 @@
     .locals 1
 
     .prologue
-    new-instance v0, Landroid/content/res/AssetManager$2;
+    new-instance v0, Landroid/content/res/AssetManager$baidu_2;
 
-    invoke-direct {v0, p0}, Landroid/content/res/AssetManager$2;-><init>(Landroid/content/res/AssetManager;)V
+    invoke-direct {v0, p0}, Landroid/content/res/AssetManager$baidu_2;-><init>(Landroid/content/res/AssetManager;)V
 
-    invoke-virtual {v0}, Landroid/content/res/AssetManager$2;->start()V
+    invoke-virtual {v0}, Landroid/content/res/AssetManager$baidu_2;->start()V
 
     return-void
 .end method

@@ -24,7 +24,7 @@
     .parameter
 
     .prologue
-    .line 561
+    .line 627
     iput-object p1, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -48,12 +48,12 @@
 
     const/4 v3, 0x0
 
-    .line 564
+    .line 630
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 566
+    .line 632
     .local v0, action:Ljava/lang/String;
     const-string v4, "android.intent.action.BOOT_COMPLETED"
 
@@ -63,26 +63,20 @@
 
     if-eqz v4, :cond_2
 
-    .line 567
+    .line 633
     const-string v4, "MountService"
 
     const-string v5, "MountService BOOT_COMPLETE"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 568
+    .line 634
     iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #setter for: Lcom/android/server/MountService;->mBooted:Z
     invoke-static {v4, v1}, Lcom/android/server/MountService;->access$1402(Lcom/android/server/MountService;Z)Z
 
-    .line 569
-    iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    #setter for: Lcom/android/server/MountService;->mShutdownRet:I
-    invoke-static {v4, v3}, Lcom/android/server/MountService;->access$902(Lcom/android/server/MountService;I)I
-
-    .line 575
+    .line 640
     const-string v4, "simulator"
 
     const-string v5, "ro.product.device"
@@ -97,7 +91,7 @@
 
     if-eqz v4, :cond_1
 
-    .line 576
+    .line 641
     iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     const-string v5, "/sdcard"
@@ -105,12 +99,12 @@
     #calls: Lcom/android/server/MountService;->notifyVolumeStateChange(Ljava/lang/String;Ljava/lang/String;II)V
     invoke-static {v4, v7, v5, v3, v6}, Lcom/android/server/MountService;->access$1500(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;II)V
 
-    .line 898
+    .line 975
     :cond_0
     :goto_0
     return-void
 
-    .line 580
+    .line 645
     :cond_1
     new-instance v3, Lcom/android/server/MountService$1$1;
 
@@ -120,7 +114,7 @@
 
     goto :goto_0
 
-    .line 652
+    .line 715
     :cond_2
     const-string v4, "android.intent.action.ACTION_BOOT_IPO"
 
@@ -130,26 +124,20 @@
 
     if-eqz v4, :cond_4
 
-    .line 653
+    .line 716
     const-string v4, "MountService"
 
     const-string v5, "MountService BOOT_IPO"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 654
+    .line 717
     iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #setter for: Lcom/android/server/MountService;->mBooted:Z
     invoke-static {v4, v1}, Lcom/android/server/MountService;->access$1402(Lcom/android/server/MountService;Z)Z
 
-    .line 655
-    iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
-
-    #setter for: Lcom/android/server/MountService;->mShutdownRet:I
-    invoke-static {v4, v3}, Lcom/android/server/MountService;->access$902(Lcom/android/server/MountService;I)I
-
-    .line 661
+    .line 723
     const-string v4, "simulator"
 
     const-string v5, "ro.product.device"
@@ -164,7 +152,7 @@
 
     if-eqz v4, :cond_3
 
-    .line 662
+    .line 724
     iget-object v4, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     const-string v5, "/sdcard"
@@ -174,7 +162,7 @@
 
     goto :goto_0
 
-    .line 666
+    .line 728
     :cond_3
     new-instance v3, Lcom/android/server/MountService$1$2;
 
@@ -184,7 +172,7 @@
 
     goto :goto_0
 
-    .line 772
+    .line 841
     :cond_4
     const-string v4, "android.hardware.usb.action.USB_STATE"
 
@@ -194,7 +182,7 @@
 
     if-eqz v4, :cond_6
 
-    .line 773
+    .line 842
     const-string v4, "connected"
 
     invoke-virtual {p2, v4, v3}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
@@ -211,7 +199,7 @@
 
     if-eqz v4, :cond_5
 
-    .line 775
+    .line 844
     .local v1, available:Z
     :goto_1
     iget-object v3, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
@@ -219,7 +207,7 @@
     #setter for: Lcom/android/server/MountService;->mIsUsbConnected:Z
     invoke-static {v3, v1}, Lcom/android/server/MountService;->access$202(Lcom/android/server/MountService;Z)Z
 
-    .line 776
+    .line 845
     iget-object v3, p0, Lcom/android/server/MountService$1;->this$0:Lcom/android/server/MountService;
 
     #calls: Lcom/android/server/MountService;->notifyShareAvailabilityChange(Z)V
@@ -231,10 +219,10 @@
     :cond_5
     move v1, v3
 
-    .line 773
+    .line 842
     goto :goto_1
 
-    .line 777
+    .line 846
     :cond_6
     const-string v3, "com.mediatek.dm.LAWMO_UNLOCK"
 
@@ -244,14 +232,14 @@
 
     if-eqz v3, :cond_7
 
-    .line 778
+    .line 847
     const-string v3, "MountService"
 
     const-string v4, "USB enable"
 
     invoke-static {v3, v4}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 779
+    .line 848
     new-instance v3, Lcom/android/server/MountService$1$3;
 
     invoke-direct {v3, p0}, Lcom/android/server/MountService$1$3;-><init>(Lcom/android/server/MountService$1;)V
@@ -260,7 +248,7 @@
 
     goto :goto_0
 
-    .line 790
+    .line 859
     :cond_7
     const-string v3, "com.mediatek.dm.LAWMO_LOCK"
 
@@ -270,14 +258,14 @@
 
     if-eqz v3, :cond_8
 
-    .line 791
+    .line 860
     const-string v3, "MountService"
 
     const-string v4, "USB disable"
 
     invoke-static {v3, v4}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 792
+    .line 861
     new-instance v3, Lcom/android/server/MountService$1$4;
 
     invoke-direct {v3, p0}, Lcom/android/server/MountService$1$4;-><init>(Lcom/android/server/MountService$1;)V
@@ -286,7 +274,7 @@
 
     goto/16 :goto_0
 
-    .line 803
+    .line 872
     :cond_8
     const-string v3, "com.mediatek.dm.LAWMO_WIPE"
 
@@ -296,14 +284,14 @@
 
     if-eqz v3, :cond_9
 
-    .line 804
+    .line 873
     const-string v3, "MountService"
 
     const-string v4, "format SD"
 
     invoke-static {v3, v4}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 805
+    .line 874
     new-instance v3, Lcom/android/server/MountService$1$5;
 
     invoke-direct {v3, p0}, Lcom/android/server/MountService$1$5;-><init>(Lcom/android/server/MountService$1;)V
@@ -312,7 +300,7 @@
 
     goto/16 :goto_0
 
-    .line 841
+    .line 910
     :cond_9
     const-string v3, "android.action.AMS_SYSTEM_READY"
 
@@ -322,14 +310,14 @@
 
     if-eqz v3, :cond_a
 
-    .line 842
+    .line 911
     const-string v3, "MountService"
 
     const-string v4, "receive intent - android.action.AMS_SYSTEM_READY"
 
     invoke-static {v3, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 843
+    .line 912
     new-instance v3, Lcom/android/server/MountService$1$6;
 
     invoke-direct {v3, p0}, Lcom/android/server/MountService$1$6;-><init>(Lcom/android/server/MountService$1;)V
@@ -338,7 +326,7 @@
 
     goto/16 :goto_0
 
-    .line 883
+    .line 949
     :cond_a
     const-string v3, "android.intent.action.LOCALE_CHANGED"
 
@@ -348,7 +336,7 @@
 
     if-eqz v3, :cond_b
 
-    .line 884
+    .line 950
     new-instance v3, Lcom/android/server/MountService$1$7;
 
     invoke-direct {v3, p0}, Lcom/android/server/MountService$1$7;-><init>(Lcom/android/server/MountService$1;)V
@@ -357,7 +345,7 @@
 
     goto/16 :goto_0
 
-    .line 891
+    .line 968
     :cond_b
     const-string v3, "android.intent.action.PRE_BOOT_COMPLETED"
 
@@ -367,7 +355,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 893
+    .line 970
     :try_start_0
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
@@ -381,11 +369,11 @@
 
     goto/16 :goto_0
 
-    .line 894
+    .line 971
     :catch_0
     move-exception v2
 
-    .line 895
+    .line 972
     .local v2, e:Ljava/io/IOException;
     const-string v3, "MountService"
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/frame_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.baidu.camera.PreviewFrameLayout android:id="@id/frame" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <com.baidu.camera.PreviewSurfaceView android:id="@id/camera_preview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <com.baidu.camera.ui.FaceView android:id="@id/face_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/grid" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <com.baidu.camera.ui.RotateLayout android:id="@id/on_timer_indicators" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" android:layout_centerInParent="true"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/selftimer_grid_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/clock1" android:scaleType="fitXY" />
+                <ImageView android:id="@id/selftimer_grid_new_land" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/clock1" android:scaleType="fitXY" />
+                <ImageView android:id="@id/selftimer_grid" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" />
+            </LinearLayout>
+        </com.baidu.camera.ui.RotateLayout>
+        <include layout="@layout/focus_indicator" />
+        <include layout="@layout/priority_indicators" />
+        <include layout="@layout/priority_port_menu" />
+        <com.baidu.camera.ui.RotateLayout android:id="@id/zoom_indicators" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="115.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.baidu.camera.ui.ZoomControlBar android:id="@id/zoom_control" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="280.0dip" />
+        </com.baidu.camera.ui.RotateLayout>
+    </com.baidu.camera.PreviewFrameLayout>
+    <include layout="@layout/indicator_bar" />
+</RelativeLayout>

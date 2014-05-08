@@ -9,7 +9,7 @@
 
 # instance fields
 .field private m_removeSpellCheckReciever:Landroid/content/BroadcastReceiver;
-
+.field private final isSuggestionUnderLineRefreshFlag:Z
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
@@ -52,11 +52,6 @@
     invoke-direct {p0, p1, p2, p3}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 70
-    new-instance v0, Landroid/widget/EditText$1;
-
-    invoke-direct {v0, p0}, Landroid/widget/EditText$1;-><init>(Landroid/widget/EditText;)V
-
-    iput-object v0, p0, Landroid/widget/EditText;->m_removeSpellCheckReciever:Landroid/content/BroadcastReceiver;
 
     .line 68
     return-void

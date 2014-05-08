@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.baidu.camera.ui.ControlPanelLayout android:id="@id/control_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="525.0dip" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/review_thumbnail" />
+    <include layout="@layout/review_control" />
+    <ImageView android:id="@id/shutter_bg" android:background="@drawable/btn_shutter_default_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.baidu.camera.ShutterButton android:id="@id/shutter_button" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_shutter" android:scaleType="center" android:layout_centerInParent="true" android:visible="false" android:contentDescription="@string/accessibility_shutter_button" />
+    <ImageView android:id="@id/recording_tag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</com.baidu.camera.ui.ControlPanelLayout>

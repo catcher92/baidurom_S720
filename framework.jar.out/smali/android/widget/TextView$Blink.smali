@@ -108,7 +108,7 @@
     if-eqz v0, :cond_0
 
     #calls: Landroid/widget/TextView;->shouldBlink()Z
-    invoke-static {v0}, Landroid/widget/TextView;->access$2000(Landroid/widget/TextView;)Z
+    invoke-static {v0}, Landroid/widget/TextView;->access$2100(Landroid/widget/TextView;)Z
 
     move-result v1
 
@@ -121,7 +121,7 @@
 
     .line 8727
     #calls: Landroid/widget/TextView;->invalidateCursorPath()V
-    invoke-static {v0}, Landroid/widget/TextView;->access$2100(Landroid/widget/TextView;)V
+    invoke-static {v0}, Landroid/widget/TextView;->access$2200(Landroid/widget/TextView;)V
 
     .line 8730
     :cond_2

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <add-resource type="bool" name="def_dynamic_navigation_bar_enable" />
+    <bool name="def_dynamic_navigation_bar_enable">false</bool> 
+</resources>

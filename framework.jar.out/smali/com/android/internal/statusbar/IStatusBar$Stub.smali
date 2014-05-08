@@ -50,6 +50,8 @@
 
 .field static final TRANSACTION_setSystemUiVisibility:I = 0x9
 
+.field static final TRANSACTION_showOrhideNavigationBar:I = 0x10
+
 .field static final TRANSACTION_showSIMIndicator:I = 0xe
 
 .field static final TRANSACTION_toggleRecentApps:I = 0xd
@@ -606,4 +608,11 @@
         0x10 -> :sswitch_10
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
+.end method
+
+.method public enableTransparent(ZLjava/lang/String;)V
+    .locals 0
+
+    .prologue
+    return-void
 .end method

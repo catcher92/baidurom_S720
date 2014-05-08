@@ -7,4 +7,4 @@ sdkInfo:
 packageInfo:
   cur_package: android
   orig_package: android
-compressionType: true
+compressionType: false
