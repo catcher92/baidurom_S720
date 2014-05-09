@@ -16,3 +16,8 @@ if [ "$apkBaseName" = "Settings" ];then
 	
 fi
 
+if  [ "$apkBaseName" = "BaiduMusicPlayer" ];then
+	echo ">>> in custom_app $apkBaseName"
+	# Fix playing music
+	sed -i 's#invoke-virtual {p0, v0}, Lcom/baidu/musicplayer/playing/PlayingActivity;->setTouchPadListener(Landroid/app/Activity$TouchPadListener;)V#invoke-virtual {p0, v0}, Landroid/app/Activity;->setTouchPadListener(Landroid/app/Activity$TouchPadListener;)V#g' $tempSmaliDir/smali/com/baidu/musicplayer/playing/PlayingActivity.smali
+fi

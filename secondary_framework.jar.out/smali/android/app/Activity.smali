@@ -13,6 +13,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/Activity$TouchPadListener;,
         Landroid/app/Activity$ManagedCursor;,
         Landroid/app/Activity$NonConfigurationInstances;,
         Landroid/app/Activity$ManagedDialog;
@@ -166,6 +167,7 @@
 
 .field private mToken:Landroid/os/IBinder;
 
+.field private mTouchPadListener:Landroid/app/Activity$TouchPadListener;
 .field private mUiThread:Ljava/lang/Thread;
 
 .field mVisibleFromClient:Z
@@ -7866,6 +7868,18 @@
     return-void
 .end method
 
+.method public setTouchPadListener(Landroid/app/Activity$TouchPadListener;)V
+    .locals 0
+    .parameter "l"
+
+    .prologue
+    .line 2347
+    iput-object p1, p0, Landroid/app/Activity;->mTouchPadListener:Landroid/app/Activity$TouchPadListener;
+
+    .line 2348
+    return-void
+.end method
+
 .method public setVisible(Z)V
     .locals 2
     .parameter "visible"
@@ -8816,5 +8830,18 @@
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnCreateContextMenuListener(Landroid/view/View$OnCreateContextMenuListener;)V
 
     .line 2747
+    return-void
+.end method
+
+.method public unsetTouchPadListener()V
+    .locals 1
+
+    .prologue
+    .line 2354
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/app/Activity;->mTouchPadListener:Landroid/app/Activity$TouchPadListener;
+
+    .line 2355
     return-void
 .end method

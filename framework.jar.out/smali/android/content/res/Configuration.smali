@@ -1394,18 +1394,6 @@
 
     add-int v0, v1, v2
 
-    mul-int/lit8 v1, v0, 0x1f
-
-    iget v2, p0, Landroid/content/res/Configuration;->themeChanged:I
-
-    add-int v0, v1, v2
-
-    mul-int/lit8 v1, v0, 0x1f
-
-    iget v2, p0, Landroid/content/res/Configuration;->themeChanged:I
-
-    add-int v0, v1, v2
-
     .line 1196
     return v0
 
