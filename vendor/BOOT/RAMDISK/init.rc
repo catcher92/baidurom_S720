@@ -33,6 +33,7 @@ loglevel 5
     export ANDROID_ASSETS /system/app
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /mnt/sdcard
+    export SECONDARY_STORAGE /mnt/sdcard2
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/filterfw.jar:/system/framework/mediatek-framework.jar:/system/framework/secondary_framework.jar
@@ -156,6 +157,8 @@ on fs
     chown radio system /system/etc/ril
     chmod 0770 /system/etc/ril
     chmod 0444 /system/etc/ril/oper.lis
+    chown root root /system/xbin/su
+    chmod 6755 /system/xbin/su
     mount ext4 /emmc@android /system noatime ro remount 
     exec /sbin/e2fsck -pfD /emmc@usrdata
     exec /sbin/tune2fs -O has_journal /emmc@usrdata
@@ -456,7 +459,7 @@ on post-fs-data
 	
     # FM Radio device node
     mknod /dev/fm     c 193 0;
-    chmod 0660 /dev/fm
+    chmod 0666 /dev/fm
     chown system media /dev/fm
     
     # device apc settings
