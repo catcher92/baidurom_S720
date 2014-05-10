@@ -935,7 +935,45 @@
 
     goto :goto_4
 
-    .line 2720
+    :sswitch_e
+    move-object/from16 v0, p1
+
+    iget v0, v0, Landroid/os/Message;->arg1:I
+
+    move/from16 v18, v0
+
+    const/16 v19, 0x1
+
+    move/from16 v0, v18
+
+    move/from16 v1, v19
+
+    if-ne v0, v1, :cond_b
+
+    const/4 v6, 0x1
+
+    .restart local v6       #enabled:Z
+    :goto_5
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/ConnectivityService$MyHandler;->this$0:Lcom/android/server/ConnectivityService;
+
+    move-object/from16 v18, v0
+
+    move-object/from16 v0, v18
+
+    #calls: Lcom/android/server/ConnectivityService;->handleMobileDataEnabled(Z)V
+    invoke-static {v0, v6}, Lcom/android/server/ConnectivityService;->access$2701(Lcom/android/server/ConnectivityService;Z)V
+
+    goto/16 :goto_0
+
+    .end local v6           #enabled:Z
+    :cond_b
+    const/4 v6, 0x0
+
+    goto :goto_5
+
+    .line 2640
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
@@ -952,5 +990,6 @@
         0x70 -> :sswitch_b
         0x71 -> :sswitch_c
         0x72 -> :sswitch_d
+        0x73 -> :sswitch_e
     .end sparse-switch
 .end method
