@@ -50,7 +50,7 @@
 
 # direct methods
 .method private constructor <init>(Landroid/widget/TextView;)V
-    .locals 0
+    .locals 1
     .parameter
 
     .prologue
