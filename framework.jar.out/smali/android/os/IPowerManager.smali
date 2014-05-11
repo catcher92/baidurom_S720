@@ -71,14 +71,6 @@
     .end annotation
 .end method
 
-.method public abstract getButtonLightState()I
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract getLightSensorLevelValue(I)I
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -183,21 +175,6 @@
     .end annotation
 .end method
 
-.method public abstract setButtonLight(I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
-.method public abstract setButtonLightState(I)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
 .method public abstract setMaxBrightness(I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {

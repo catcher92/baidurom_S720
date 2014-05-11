@@ -12,7 +12,7 @@ if [ "$apkBaseName" = "Settings" ];then
 	fi
 	
 	# Remove the Official Verify Preference.
-	#sed -i -e "/^\.method.*setOfficialVerifyPreference()V/,/^\.end method/d" $tempSmaliDir/smali/com/android/settings/DeviceInfoSettings.smali
+	sed -i -e "/^\.method.*setOfficialVerifyPreference()V/,/^\.end method/d" $tempSmaliDir/smali/com/android/settings/DeviceInfoSettings.smali
 	
 fi
 
